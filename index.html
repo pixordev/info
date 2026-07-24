@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixor Dev | Modern Web Design & Development in Sri Lanka</title>
+    <meta name="description"
+        content="Pixor Dev builds modern, fast, and high-converting websites for businesses in Sri Lanka. Get a free quote today!">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f4ff',
+                            100: '#e0e7ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            purple: '#8b5cf6',
+                            purpleDark: '#7c3aed',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-brand-purple;
+            }
+            .bg-gradient-brand {
+                @apply bg-gradient-to-r from-brand-600 to-brand-purple;
+            }
+            .glass-nav {
+                @apply bg-white/80 backdrop-blur-md border-b border-gray-100;
+            }
+        }
+        
+        /* Custom Accordion Styles */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-600 antialiased bg-gray-50/30">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <img src="logo2.png" alt="Pixor Dev Logo" class="h-10 w-auto">
+                    <span class="font-heading font-bold text-2xl text-gray-900 tracking-tight">Pixor Dev</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="font-medium text-gray-700 hover:text-brand-600 transition-colors">Home</a>
+                    <a href="#services"
+                        class="font-medium text-gray-700 hover:text-brand-600 transition-colors">Services</a>
+                    <!-- <a href="#portfolio" class="font-medium text-gray-700 hover:text-brand-600 transition-colors">Portfolio</a> -->
+                    <a href="#packages"
+                        class="font-medium text-gray-700 hover:text-brand-600 transition-colors">Packages</a>
+                    <a href="#contact"
+                        class="font-medium text-gray-700 hover:text-brand-600 transition-colors">Contact</a>
+                    <a href="#contact"
+                        class="bg-gray-900 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-0.5">
+                        Get Quote
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-brand-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#home"
+                    class="block px-3 py-3 font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 rounded-lg">Home</a>
+                <a href="#services"
+                    class="block px-3 py-3 font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 rounded-lg">Services</a>
+                <!-- <a href="#portfolio" class="block px-3 py-3 font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 rounded-lg">Portfolio</a> -->
+                <a href="#packages"
+                    class="block px-3 py-3 font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 rounded-lg">Packages</a>
+                <a href="#contact"
+                    class="block px-3 py-3 font-medium text-gray-700 hover:text-brand-600 hover:bg-gray-50 rounded-lg">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none -z-10">
+            <div
+                class="absolute top-20 left-0 w-72 h-72 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob">
+            </div>
+            <div
+                class="absolute top-20 right-0 w-72 h-72 bg-brand-purple rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000">
+            </div>
+            <div
+                class="absolute -bottom-8 left-40 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000">
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <!-- <span class="inline-block py-1 px-3 rounded-full bg-brand-50 border border-brand-100 text-brand-600 font-medium text-sm mb-6">
+                    Top Rated Web Agency in Sri Lanka
+                </span> -->
+                <h1
+                    class="font-heading text-5xl lg:text-7xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 max-w-4xl mx-auto">
+                    We Build Modern Websites That <span class="text-gradient">Grow Your Business</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Transform your online presence with beautifully designed, mobile-friendly websites built for
+                    performance, trust, and long-term success. </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
+                    <a href="#contact"
+                        class="bg-gradient-brand text-white px-8 py-4 rounded-full font-semibold text-lg shadow-glow hover:shadow-brand-500/50 transform hover:-translate-y-1 transition-all duration-300">
+                        Get a Free Quote
+                    </a>
+                    <a href="#portfolio"
+                        class="bg-white text-gray-900 border border-gray-200 hover:border-gray-300 px-8 py-4 rounded-full font-semibold text-lg shadow-sm hover:shadow-md transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                        View Our Work <i class="fas fa-arrow-right text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="flex flex-wrap justify-center gap-6 md:gap-12 mb-16 opacity-80" data-aos="fade-up"
+                data-aos-delay="200">
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-600">
+                    <i class="fas fa-mobile-alt text-brand-600 text-xl"></i> Mobile Friendly
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-600">
+                    <i class="fas fa-bolt text-yellow-500 text-xl"></i> Fast Loading
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-600">
+                    <i class="fas fa-search text-brand-purple text-xl"></i> SEO Optimized
+                </div>
+                <div class="flex items-center gap-2 text-sm font-medium text-gray-600">
+                    <i class="fab fa-whatsapp text-green-500 text-xl"></i> WhatsApp Integration
+                </div>
+            </div>
+
+            <!-- Hero Mockup -->
+            <!-- <div class="relative mx-auto max-w-5xl" data-aos="fade-up" data-aos-delay="400">
+                <div class="rounded-2xl shadow-2xl overflow-hidden border border-gray-100 bg-white p-2">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2015&q=80" alt="Pixor Dev Dashboard Mockup" class="w-full h-auto rounded-xl">
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                        alt="Team collaborating" class="rounded-3xl shadow-soft">
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">About Pixor Dev</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">Your Digital Growth
+                        Partner in Sri Lanka</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        At Pixor Dev, we combine modern design, smart functionality, and strategic thinking to build
+                        websites that help businesses thrive in the digital landscape. As a passionate team based in Sri
+                        Lanka, we work closely with each client to create a strong, reliable online presence that stands
+                        out, attracts customers, and supports long-term growth. </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Whether you're launching a new business or expanding an established brand, we're here to create
+                        a powerful online presence that helps you connect with the right audience and achieve your
+                        business goals. </p>
+                    <!-- <div class="flex items-center gap-4">
+                        <div class="flex -space-x-4">
+                            <img class="w-12 h-12 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                            <img class="w-12 h-12 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                            <img class="w-12 h-12 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/68.jpg" alt="Client">
+                            <div class="w-12 h-12 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600">50+</div>
+                        </div>
+                        <div class="text-sm font-medium text-gray-900">
+                            Trusted by 50+ businesses<br><span class="text-gray-500 font-normal">across the island.</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Our Services</h2>
+                <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">Everything You Need to
+                    Succeed Online</h3>
+                <p class="text-gray-600 text-lg">We provide end-to-end web solutions tailored for your business needs,
+                    ensuring high performance and conversions.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                        <i
+                            class="fas fa-laptop-code text-2xl text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">Website Design</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Beautiful, custom-designed websites that perfectly
+                        reflect your brand identity.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                        <i
+                            class="fas fa-mobile-alt text-2xl text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">Mobile-Friendly</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Fully responsive layouts that look perfect on
+                        phones, tablets, and desktops.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                        <i
+                            class="fas fa-tachometer-alt text-2xl text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">Fast Performance</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Optimized code and assets for lightning-fast
+                        loading speeds and better SEO.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div
+                        class="w-14 h-14 bg-green-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-500 transition-colors duration-300">
+                        <i class="fab fa-whatsapp text-2xl text-green-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">WhatsApp Integration</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Direct chat buttons to let customers contact you
+                        instantly via WhatsApp.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="500">
+                    <div
+                        class="w-14 h-14 bg-red-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-500 transition-colors duration-300">
+                        <i
+                            class="fas fa-map-marker-alt text-2xl text-red-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">Google Maps</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Embedded maps to help local customers find your
+                        physical business easily.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="600">
+                    <div
+                        class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                        <i
+                            class="far fa-calendar-check text-2xl text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">Booking Systems</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Integrated reservation systems for hotels, salons,
+                        and service providers.</p>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="700">
+                    <div
+                        class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                        <i
+                            class="fas fa-shopping-cart text-2xl text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">E-commerce</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Secure online stores with payment gateways to sell
+                        your products 24/7.</p>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100 group"
+                    data-aos="fade-up" data-aos-delay="800">
+                    <div
+                        class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-600 transition-colors duration-300">
+                        <i class="fas fa-headset text-2xl text-brand-600 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-heading font-semibold text-xl text-gray-900 mb-3">Support & maintenance</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Ongoing technical support, security updates, and
+                        content management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <!-- <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">Industries We Empower</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+
+                <div class="relative rounded-2xl overflow-hidden group h-64" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hotels" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h4 class="text-white font-heading font-semibold text-xl">Hotels & Villas</h4>
+                    </div>
+                </div>
+
+                <div class="relative rounded-2xl overflow-hidden group h-64" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurants" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h4 class="text-white font-heading font-semibold text-xl">Restaurants</h4>
+                    </div>
+                </div>
+
+                <div class="relative rounded-2xl overflow-hidden group h-64" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Plant Nurseries" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h4 class="text-white font-heading font-semibold text-xl">Plant Nurseries</h4>
+                    </div>
+                </div>
+
+                <div class="relative rounded-2xl overflow-hidden group h-64" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salons" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <h4 class="text-white font-heading font-semibold text-xl">Salons & Spas</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-gray-900 text-white relative overflow-hidden">
+        <div
+            class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-brand-600 rounded-full mix-blend-screen filter blur-[100px] opacity-50">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-brand-purple rounded-full mix-blend-screen filter blur-[100px] opacity-50">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-brand-500 font-semibold tracking-wide uppercase text-sm mb-3">Why Pixor Dev</h2>
+                <h3 class="font-heading text-3xl md:text-4xl font-bold mb-6">The Smart Choice for Your Business</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center mb-6 border border-gray-700">
+                        <i class="fas fa-tags text-3xl text-brand-400"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-semibold mb-4">Affordable Pricing</h4>
+                    <p class="text-gray-400 leading-relaxed">High-quality web solutions designed to fit the budget of
+                        small and medium businesses in Sri Lanka without compromising quality.</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center mb-6 border border-gray-700">
+                        <i class="fas fa-magic text-3xl text-brand-purple"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-semibold mb-4">Modern Design</h4>
+                    <p class="text-gray-400 leading-relaxed">We stay ahead of the curve. Your website will feature the
+                        latest design trends, intuitive UI, and smooth micro-interactions.</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div
+                        class="w-20 h-20 mx-auto bg-gray-800 rounded-full flex items-center justify-center mb-6 border border-gray-700">
+                        <i class="fas fa-shield-alt text-3xl text-green-400"></i>
+                    </div>
+                    <h4 class="font-heading text-xl font-semibold mb-4">Reliable Support</h4>
+                    <p class="text-gray-400 leading-relaxed">We don't just build and disappear. We offer ongoing
+                        maintenance and friendly support to keep your site running smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">How We Work</h2>
+                <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our Streamlined Process</h3>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-100 -translate-y-1/2"></div>
+
+                <div class="grid md:grid-cols-5 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div
+                            class="w-16 h-16 mx-auto bg-white border-4 border-brand-100 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-sm text-brand-600 font-bold text-xl">
+                            1</div>
+                        <h4 class="font-heading font-semibold text-gray-900 mb-2">Discussion</h4>
+                        <p class="text-sm text-gray-500">Understanding your goals</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div
+                            class="w-16 h-16 mx-auto bg-white border-4 border-brand-100 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-sm text-brand-600 font-bold text-xl">
+                            2</div>
+                        <h4 class="font-heading font-semibold text-gray-900 mb-2">Planning</h4>
+                        <p class="text-sm text-gray-500">Sitemap & wireframing</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div
+                            class="w-16 h-16 mx-auto bg-brand-600 border-4 border-brand-100 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-glow text-white font-bold text-xl">
+                            3</div>
+                        <h4 class="font-heading font-semibold text-gray-900 mb-2">Design</h4>
+                        <p class="text-sm text-gray-500">UI/UX visual concepts</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div
+                            class="w-16 h-16 mx-auto bg-white border-4 border-brand-100 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-sm text-brand-600 font-bold text-xl">
+                            4</div>
+                        <h4 class="font-heading font-semibold text-gray-900 mb-2">Development</h4>
+                        <p class="text-sm text-gray-500">Coding the magic</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="relative text-center" data-aos="fade-up" data-aos-delay="500">
+                        <div
+                            class="w-16 h-16 mx-auto bg-gray-900 border-4 border-gray-100 rounded-full flex items-center justify-center mb-6 relative z-10 shadow-sm text-white font-bold text-xl">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4 class="font-heading font-semibold text-gray-900 mb-2">Launch</h4>
+                        <p class="text-sm text-gray-500">Testing & deployment</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <!-- <section id="portfolio" class="py-24 bg-gray-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12" data-aos="fade-up">
+                <div class="max-w-2xl">
+                    <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Our Work</h2>
+                    <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900">Recent Projects</h3>
+                </div>
+                <a href="#contact"
+                    class="hidden md:inline-flex items-center gap-2 text-brand-600 font-semibold hover:text-brand-700 transition-colors">
+                    Start Your Project <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <div class="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative h-72 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="RV Homestay"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-300">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full">Hospitality</span>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-gray-900 mb-2">RV Homestay</h4>
+                        <p class="text-gray-600">A beautiful, booking-ready website for a cozy homestay in Ella,
+                            complete with WhatsApp integration.</p>
+                    </div>
+                </div>
+
+
+                <div class="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative h-72 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
+                            alt="Paragon Plant Nursery"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-300">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-green-600 bg-green-50 px-3 py-1 rounded-full">E-Commerce</span>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-gray-900 mb-2">Paragon Plant Nursery</h4>
+                        <p class="text-gray-600">An vibrant online catalog and ordering system for a leading local plant
+                            nursery.</p>
+                    </div>
+                </div>
+
+
+                <div class="group rounded-3xl overflow-hidden bg-white shadow-sm hover:shadow-soft transition-all duration-300 border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative h-72 overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80"
+                            alt="Restaurant Website"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div
+                            class="absolute inset-0 bg-gray-900/10 group-hover:bg-transparent transition-colors duration-300">
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <span
+                                class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-3 py-1 rounded-full">F&B</span>
+                        </div>
+                        <h4 class="font-heading text-2xl font-bold text-gray-900 mb-2">OceanView Restaurant</h4>
+                        <p class="text-gray-600">A mouth-watering digital menu and reservation portal with seamless
+                            mobile optimization.</p>
+                    </div>
+                </div>
+
+
+                <div class="group rounded-3xl overflow-hidden bg-gray-50 border-2 border-dashed border-gray-200 flex flex-col items-center justify-center p-8 text-center min-h-[400px]"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
+                        <i class="fas fa-plus text-3xl text-gray-400"></i>
+                    </div>
+                    <h4 class="font-heading text-2xl font-bold text-gray-900 mb-2">Your Project Here</h4>
+                    <p class="text-gray-500 mb-8 max-w-sm">Ready to elevate your online presence? Let's build something
+                        amazing together.</p>
+                    <a href="#contact"
+                        class="bg-gray-900 text-white px-6 py-3 rounded-full font-medium hover:bg-brand-600 transition-colors">Start
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h2 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-3">Pricing Plans</h2>
+                <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">Transparent & Affordable</h3>
+                <p class="text-gray-600 text-lg">Choose the perfect package to launch or grow your business online.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+                <!-- Starter -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <h4 class="font-heading text-xl font-bold text-gray-900 mb-2">Starter Site</h4>
+                    <p class="text-gray-500 text-sm mb-6">Perfect for small local businesses.</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-extrabold text-gray-900">LKR 30k</span>
+                        <span class="text-gray-500">/onwards</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span
+                                class="text-gray-600">Single Page Website</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span
+                                class="text-gray-600">Mobile Responsive</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span
+                                class="text-gray-600">WhatsApp Button</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-green-500 mt-1"></i> <span
+                                class="text-gray-600">Basic SEO Setup</span></li>
+                    </ul>
+                    <a href="#contact"
+                        class="block w-full py-3 px-4 bg-gray-50 text-gray-900 font-semibold text-center rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">Choose
+                        Starter</a>
+                </div>
+
+                <!-- Business (Highlighted) -->
+                <div class="bg-gray-900 rounded-3xl p-8 shadow-2xl relative transform lg:-translate-y-4 border border-gray-800"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-0 right-8 transform -translate-y-1/2">
+                        <span
+                            class="bg-gradient-brand text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">Most
+                            Popular</span>
+                    </div>
+                    <h4 class="font-heading text-xl font-bold text-white mb-2">Business Pro</h4>
+                    <p class="text-gray-400 text-sm mb-6">Ideal for hotels & restaurants.</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-extrabold text-white">LKR 65k</span>
+                        <span class="text-gray-400">/onwards</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-400 mt-1"></i> <span
+                                class="text-gray-300">Up to 5 Pages</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-400 mt-1"></i> <span
+                                class="text-gray-300">Premium UI/UX Design</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-400 mt-1"></i> <span
+                                class="text-gray-300">Contact/Booking Form</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-400 mt-1"></i> <span
+                                class="text-gray-300">Google Maps Integration</span></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-400 mt-1"></i> <span
+                                class="text-gray-300">1 Month Free Support</span></li>
+                    </ul>
+                    <a href="#contact"
+                        class="block w-full py-3 px-4 bg-gradient-brand text-white font-semibold text-center rounded-xl hover:shadow-glow transition-all duration-300">Choose
+                        Business</a>
+                </div>
+
+                <!-- Premium -->
+                <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm relative" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <h4 class="font-heading text-xl font-bold text-gray-900 mb-2">E-Commerce</h4>
+                    <p class="text-gray-500 text-sm mb-6">For selling products online.</p>
+                    <div class="mb-8">
+                        <span class="text-4xl font-extrabold text-gray-900">Custom</span>
+                    </div>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-purple mt-1"></i>
+                            <span class="text-gray-600">Full Online Store</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-purple mt-1"></i>
+                            <span class="text-gray-600">Payment Gateway</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-purple mt-1"></i>
+                            <span class="text-gray-600">Product Management</span>
+                        </li>
+                        <li class="flex items-start gap-3"><i class="fas fa-check-circle text-brand-purple mt-1"></i>
+                            <span class="text-gray-600">Advanced Analytics</span>
+                        </li>
+                    </ul>
+                    <a href="#contact"
+                        class="block w-full py-3 px-4 bg-gray-50 text-gray-900 font-semibold text-center rounded-xl hover:bg-gray-100 transition-colors border border-gray-200">Request
+                        Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <!-- <section class="py-24 bg-brand-50/50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+                <h3 class="font-heading text-3xl md:text-4xl font-bold text-gray-900 mb-6">Loved by Local Businesses</h3>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100" data-aos="fade-right">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-6 leading-relaxed italic">"Pixor Dev completely transformed our guest house's online presence. We started getting direct bookings via WhatsApp within the first week of launch. Highly recommend their professional service!"</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Owner" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h5 class="font-heading font-bold text-gray-900">Anusha P.</h5>
+                            <span class="text-sm text-gray-500">Owner, Ella Homestay</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100" data-aos="fade-left">
+                    <div class="flex text-yellow-400 mb-4 text-sm">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-6 leading-relaxed italic">"The design they did for our plant nursery is modern and incredibly fast. The team was responsive, understood our requirements perfectly, and delivered exactly what was promised."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden">
+                            <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Owner" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h5 class="font-heading font-bold text-gray-900">Kasun M.</h5>
+                            <span class="text-sm text-gray-500">Manager, Greenery LK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h3 class="font-heading text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden" open
+                    data-aos="fade-up" data-aos-delay="100">
+                    <summary
+                        class="flex justify-between items-center font-heading font-semibold cursor-pointer p-6 text-gray-900">
+                        How long does it take to build a website?
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fas fa-chevron-down text-brand-600"></i>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                        For a standard Business package, it typically takes 2-3 weeks. E-commerce sites may take 4-6
+                        weeks depending on the complexity and the number of products.
+                    </div>
+                </details>
+
+                <!-- FAQ Item -->
+                <details class="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <summary
+                        class="flex justify-between items-center font-heading font-semibold cursor-pointer p-6 text-gray-900">
+                        Do you provide domain and hosting?
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fas fa-chevron-down text-brand-600"></i>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                        Yes, we can handle domain registration (.lk, .com, etc.) and reliable cloud hosting as part of
+                        our service. We make the entire process hassle-free for you.
+                    </div>
+                </details>
+
+                <!-- FAQ Item -->
+                <!-- <details class="group bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <summary
+                        class="flex justify-between items-center font-heading font-semibold cursor-pointer p-6 text-gray-900">
+                        Can I update the website myself?
+                        <span class="transition-transform duration-300 group-open:rotate-180">
+                            <i class="fas fa-chevron-down text-brand-600"></i>
+                        </span>
+                    </summary>
+                    <div class="p-6 pt-0 text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                        Absolutely. We build our websites with user-friendly Content Management Systems (CMS) so you can
+                        easily update text, images, and products without any coding knowledge.
+                    </div>
+                </details> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-brand"></div>
+        <!-- Decorative pattern overlay -->
+        <div class="absolute inset-0 opacity-10"
+            style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h2 class="font-heading text-4xl md:text-5xl font-bold text-white mb-6" data-aos="fade-up">Ready to Grow
+                Your Business Online?</h2>
+            <p class="text-brand-50 text-xl mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                Let's discuss your project. Contact us today for a free consultation and personalized quote.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="200">
+                <!-- <a href="https://wa.me/94701234567" target="_blank"
+                    class="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
+                </a> -->
+                <a href="mailto:pixordev@gmail.com"
+                    class="bg-white text-brand-700 hover:bg-brand-50 px-8 py-4 rounded-full font-bold text-lg shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                    Email for Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Brand -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <img src="logo2.png" alt="Pixor Dev Logo" class="h-8 w-auto">
+                        <span class="font-heading font-bold text-xl text-white">Pixor Dev</span>
+                    </div>
+                    <p class="text-sm mb-6 max-w-xs leading-relaxed">Sri Lanka's premier web design agency crafting
+                        digital experiences that drive growth for modern businesses.</p>
+                    <div class="flex space-x-4">
+                        <!-- <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h5 class="text-white font-heading font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#home" class="hover:text-brand-400 transition-colors">Home</a></li>
+                        <li><a href="#services" class="hover:text-brand-400 transition-colors">Services</a></li>
+                        <!-- <li><a href="#portfolio" class="hover:text-brand-400 transition-colors">Portfolio</a></li> -->
+                        <li><a href="#packages" class="hover:text-brand-400 transition-colors">Packages</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h5 class="text-white font-heading font-semibold mb-4">Contact Us</h5>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-gray-500"></i>
+                            <span>Colombo, Sri Lanka</span>
+                        </li>
+                        <!-- <li class="flex items-center gap-3">
+                            <i class="fas fa-phone-alt text-gray-500"></i>
+                            <span>+94 70 123 4567</span>
+                        </li> -->
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-gray-500"></i>
+                            <span>pixordev@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <p>&copy; 2026 Pixor Dev. All rights reserved.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animations
+        AOS.init({
+            once: true,
+            offset: 50,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav', 'py-3');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
